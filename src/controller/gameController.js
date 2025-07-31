@@ -1,4 +1,6 @@
-import Player from '../model/player.js';
+import Player from '../models/player.js';
+import Ship from '../models/ship.js';
+
 export default class GameController {
     constructor()
     {
@@ -23,19 +25,19 @@ export default class GameController {
         {
             let placed = false;
             let attempts = 0;
+            const ship = new Ship(length);
             while (!placed && attempts < 100) 
             {
                 const x = Math.floor(Math.random() * 10);
                 const y = Math.floor(Math.random() * 10);
                 const orientation = Math.random() < 0.5 ? 'horizontal' : 'vertical';
-                const ship = new Ship(length);
+                
 
-                placed = player.gameBoard.PlaceShip(ship, x, y, orientation);
+                placed = player.gameBoard.PlaceShip(length, x, y, orientation);
                 attempts++;
             }
         }
     }
-
 
     PlayTurn(x, y)
     {
@@ -58,7 +60,7 @@ export default class GameController {
             this.switchTurn();
 
             setTimeout(() => {
-                this.computer.randomAttack(this.player.gameBoard);
+                this.computer.RandomAttack(this.player.gameBoard);
                 if(this.player.gameBoard.IsShipSunk()) {
                     this.winner = this.computer.name;
                     this.gameOver = true;
@@ -77,14 +79,14 @@ export default class GameController {
     }
 
     restart() {
-        this.player1 = new Player('Player', false);
-        this.player2 = new Player('Computer', true);
-        this.currentPlayer = this.player1;
+        this.player = new Player('Player', true);
+        this.computer = new Player('Computer', false);
+        this.currentTurn = this.player;
         this.gameOver = false;
         this.winner = null;
         
-        this.setupRandomShips(this.player1);
-        this.setupRandomShips(this.player2);
+        this.SetupRandomShips(this.player);
+        this.SetupRandomShips(this.computer);
     }
 
 }

@@ -1,4 +1,4 @@
-import {gameBoard} from './gameboard.js';
+import gameBoard from './gameboard.js';
 
 export default class Player{
     constructor(name,isPlayer=false){
@@ -44,6 +44,10 @@ export default class Player{
 
     resetMoves() {
         this.attempts.clear();
+        this.gameBoard.shipPositions.clear();
+        this.gameBoard.ships = [];
+        this.gameBoard.attacks.clear();
+        this.gameBoard.misses.clear();
     }
 
 }
