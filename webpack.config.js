@@ -9,7 +9,7 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
-    publicPath: process.env.NODE_ENV === 'production' ? '/Battleship/' : '/',
+    publicPath: "./",
   },
   plugins: [
     new HtmlWebpackPlugin({

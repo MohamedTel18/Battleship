@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/MohamedTel18/Battleship/issues"
   },
-  "homepage": "https://github.com/MohamedTel18/Battleship#readme",
+  "homepage": "https://mohamedtel18.github.io/Battleship/",
   "devDependencies": {
     "css-loader": "^7.1.2",
     "gh-pages": "^6.1.1",
